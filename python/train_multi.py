@@ -42,12 +42,12 @@ def trainModel(args) :
         mask_dir=maskDir()
         mask_ext=maskExt()
 
-    dataIterator,labels,paths = getDataCutmixIteratorFromListing(dataDir(),trainingSet(args.split),
+    dataIterator,labels,paths = getDataSamplemixIteratorFromListing(dataDir(),trainingSet(args.split),
                                                                  blocklist=trainingBlocklists(args.split),
                                                                  shuffled=True,batch_size=args.bs,numPools=args.numPools,tilerank=args.rank,
                                                                  input_tensor_shape=args.tensor_shape,normalize=True,
                                                                  mask_dir=mask_dir,mask_ext=mask_ext)
-    vdataIterator,vlabels,vpaths = getDataCutmixIteratorFromListing(dataDir(),validationSet(args.split),
+    vdataIterator,vlabels,vpaths = getDataSamplemixIteratorFromListing(dataDir(),validationSet(args.split),
                                                                  blocklist=validationBlocklists(args.split),
                                                                  shuffled=True,batch_size=args.bs,numPools=1,tilerank=args.rank,
                                                                  input_tensor_shape=args.tensor_shape,normalize=True,
